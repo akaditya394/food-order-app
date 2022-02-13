@@ -1,11 +1,17 @@
-import React from "react";
+import React, { useRef } from "react";
 import classes from "./MealItemForm.module.css";
 import Input from "../../UI/Input";
 
 const MealItemForm = (props) => {
+  const formSubmitHandler = (event) => {
+    event.preventDefault();
+  };
+
+  const amountInputRef = useRef();
   return (
-    <form className={classes.form}>
+    <form className={classes.form} onSubmit={formSubmitHandler}>
       <Input
+        ref={amountInputRef}
         label="Amount"
         input={{
           id: "amount_" + props.id, // this changed!
